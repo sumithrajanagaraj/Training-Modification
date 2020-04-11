@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>PRACTICE IF CONDITIONS</title>
+	<title>PRACTICE IF CONDITIONS and loops</title>
 </head>
 <body>
 <?php 
