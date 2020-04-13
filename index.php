@@ -4,18 +4,35 @@
 	<title>PRACTICE IF CONDITIONS and loops</title>
 </head>
 <body>
-<?php 
-$signal = 1;
-if($signal == 0){
-	?>
-<div class="container"style="height: 150px; background-color: red;"></div>
-<?php 
-} 
-elseif ($signal==1){
-	?>
-<div class="container"style="height: 150px; background-color: green;"></div>
-<?php }
-else{ ?>
-<div class="container"style="height: 150px; background-color: orange;"></div><?php }?>
+<form method="post" action="index.php">
+	<input type="text" name="username" id placeholder="Username" required="">
+	<br><br>
+	<input type="password" name="password" placeholder="Password" required="">
+	<br><br>
+	<input type="submit" name="submit" value="Login">
+
+</form>
 </body>
 </html>
+
+<?php
+$password = "hellopassword";
+
+if(isset($_POST['username'])){
+	$pass = $_POST['password'];
+	$uname = $_POST['username'];
+	if($pass == $password){
+		echo "Login Successful";
+		session_start();
+		$_SESSION['uname'] = $uname;
+		$_SESSION['logged_in'] = "TRUE";
+	}
+	else{
+		echo "login failed";
+		echo "Please Login to continue.";
+	}
+}
+
+
+
+?>
