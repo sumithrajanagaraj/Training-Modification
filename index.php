@@ -1,38 +1,43 @@
+<?php
+require"connection.php";
+?>
 <!DOCTYPE html>
 <html>
 <head>
-	<title>PRACTICE IF CONDITIONS and loops</title>
+	<title>Sign Up Form</title>
 </head>
 <body>
 <form method="post" action="index.php">
 	<input type="text" name="username" id placeholder="Username" required="">
 	<br><br>
+	<input type="email" name="email" id placeholder="Email" required="">
+	<br><br>
 	<input type="password" name="password" placeholder="Password" required="">
 	<br><br>
-	<input type="submit" name="submit" value="Login">
+	<input type="submit" name="submit" value="Register">
 
 </form>
 </body>
 </html>
 
 <?php
-$password = "hellopassword";
 
-if(isset($_POST['username'])){
-	$pass = $_POST['password'];
-	$uname = $_POST['username'];
-	if($pass == $password){
-		echo "Login Successful";
-		session_start();
-		$_SESSION['uname'] = $uname;
-		$_SESSION['logged_in'] = "TRUE";
+if(isset($_POST['username'])&& isset($_POST['email'])&& isset($_POST['password'])){
+	$name = $_POST['username'];
+	$email = $_POST['email'];
+	$password = md5($_POST['password']);
+
+
+
+echo	$sql = "INSERT INTO user_master (name,email,password) VALUES('$name','$email', '$password')";
+
+	$result = $conn->query($sql);
+	if($result){
+		echo "Data Inserted Succesfuly";
 	}
 	else{
-		echo "login failed";
-		echo "Please Login to continue.";
+		echo "There is a error.";
 	}
 }
-
-
-
 ?>
+
