@@ -20,6 +20,15 @@ if(isset($_GET['email'])){
 	<title>VIEW|EDIT</title>
 </head>
 <body>
+<?php
+		$sql_user = "SELECT `id`,`name`,`email` FROM `user_master`";
+		$result = $conn->query($sql_user);
+		while($fetch = $result->fetch_assoc()){
+			$name = $fetch['name'];
+			$email = $fetch['email'];
+			$id = $fetch['id'];
+		
+		?>
 	<form action="edit.php" method="post">
 		<table style="border: 1px solid black" align="center">
 			<tr>

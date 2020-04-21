@@ -17,8 +17,7 @@ require"connection.php";
 	<input type="submit" name="submit" value="Register">
 
 </form>
-</body>
-</html>
+
 
 <?php
 
@@ -28,8 +27,7 @@ if(isset($_POST['username'])&& isset($_POST['email'])&& isset($_POST['password']
 	$password = md5($_POST['password']);
 
 
-
-echo	$sql = "INSERT INTO user_master (name,email,password) VALUES('$name','$email', '$password')";
+	$sql = "INSERT INTO user_master (name,email,password) VALUES('$name','$email', '$password')";
 
 	$result = $conn->query($sql);
 	if($result){
@@ -40,4 +38,8 @@ echo	$sql = "INSERT INTO user_master (name,email,password) VALUES('$name','$emai
 	}
 }
 ?>
-
+<p align="center">
+<a href="login.php">Login To Continue</a>
+</p>
+</body>
+</html>

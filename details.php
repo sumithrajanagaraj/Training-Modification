@@ -1,5 +1,5 @@
 <?php
-include"connection.php";
+require"connection.php";
 
 if(isset($_POST['submit'])){
 	session_start();
@@ -23,13 +23,15 @@ if(isset($_POST['submit'])){
 		<tr><td>Name</td><td>Email</td><td>Action</td></tr>
 
 		<?php
+		if(isset($_POST['submit'])){
+			$user=$_SESSION['user'];
 		$sql_user = "SELECT `id`,`name`,`email` FROM `user_master`";
 		$result = $conn->query($sql_user);
 		while($fetch = $result->fetch_assoc()){
 			$name = $fetch['name'];
 			$email = $fetch['email'];
 			$id = $fetch['id'];
-		
+		}
 		?>
 		<tr><td><?php echo $name; ?></td><td><?php echo $email;?></td>
 			<td>
